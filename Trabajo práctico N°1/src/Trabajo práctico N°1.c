@@ -38,19 +38,18 @@ int main(void)
 
 	do
 	{
-		// Llamo a la función getNumero para obtener una de las 5 opciones de mi calculadora.
 		respuesta = utn_getNumero(&opcion, "Seleccione una opción\n\n1 - Ingresar el primer número\n2 - Ingresar el segundo número\n3 - Calcular todas las operaciones\n4 - Informar resultados\n5 - Salir\n", "Esa no es una opción válida", 1, 5, 2);
 		if(respuesta == 0) // Si la respuesta de la función es 0, es porque me devolvió un valor correcto y...
 		{
 			switch(opcion) // ...entro al switch.
 			{
-			case 1: // Corregir acá, si ingresa una letra también lo toma.
+			case 1:
 				printf("Entró a la opción 1, ingrese el primer número:\n");
 				scanf("%d", &numeroUno);
 				printf("El número uno es: %d\n", numeroUno);
 				primerNumeroIngresado = 1;
 				break;
-			case 2: // Corregir acá también, si ingresa una letra lo toma.
+			case 2:
 				printf("Entró a la opción 2, ingrese el segundo número:\n");
 				scanf("%d", &numeroDos);
 				printf("El número dos es: %d\n", numeroDos);

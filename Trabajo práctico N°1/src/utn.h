@@ -1,8 +1,8 @@
 /*
  * utn.h
  *
- *  Created on: 9 sep. 2020
- *      Author: Hzkr
+ *  Trabajo práctico N°1
+ *	Gabriel Villaverde - División H
  */
 
 #ifndef UTN_H_
