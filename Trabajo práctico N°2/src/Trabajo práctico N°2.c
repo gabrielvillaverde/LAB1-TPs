@@ -98,7 +98,7 @@ int main(void) {
 					{
 						switch (reportOption) // Le indico al usuario qué información quiere recibir en base a un menú de 2 opciones.
 						{
-						case 1:
+						case 1: // Si elige el caso 1, quiere un listado de empleados ordenados alfabéticamente por apellido y luego numéricamente por sector
 							if (utn_getNumberInt("Select an option to order: \n\n1 - Sort employees in ascending order\n2 - Sort employees in descending order\n","\nError, select a correct option [1-2]\n",&orderOption,2,1,2) == 0)
 							{
 								switch (orderOption) // Le indico al usuario qué tipo de orden quiere observar (ascendente o descendente).
@@ -117,7 +117,7 @@ int main(void) {
 								}
 							}
 							break;
-						case 2:
+						case 2: // Si elige el caso 2, quiere averiguar la masa salarial y el promedio de los salarios, además de saber la cantidad de empleados que están por encima del promedio salarial.
 							printf("You want to find out the total and average wages, and how many employees are above the average salary:\n");
 							employee_calculateTotalAndAverageSalary(arrayEmployees, QTY_EMPLOYEES, &totalSalary, &averageSalary, &greaterThanAverage); // Llamo a la función que calcula lo solicitado en la opción 2 del reporte.
 							break;

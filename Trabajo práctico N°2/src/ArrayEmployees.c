@@ -30,8 +30,7 @@ static int IdsEmpty = TRUE;
 * \param pArrayList Employee* Pointer to array of employees
 * \param len int Array length
 * \return int Return (-1) if Error [Invalid length or NULL pointer] - (0) if Ok
-*
-*/
+**/
 int employee_initEmployees(Employee* pArrayList, int len)
 {
 	int retorno = -1;
@@ -51,7 +50,7 @@ int employee_initEmployees(Employee* pArrayList, int len)
 * \param len int Array lenght
 * \param index int Receives content of bufferEmployee
 * \return int Return (-1) if Error [Invalid length or NULL pointer or without free space] - (0) if Ok
-*/
+**/
 int employee_addEmployee(Employee* pArrayList, int len, int index)
 {
 	int retorno = -1;
@@ -84,8 +83,7 @@ int employee_addEmployee(Employee* pArrayList, int len, int index)
 * \param index int Position in the array that changes between TRUE and FALSE value determined by isEmpty flag.
 * \param id int Receives the ID that will be removed from the system.
 * \return int Return (-1) if Error [Invalid length or NULL pointer or if can't find a employee] - (0) if Ok
-*
-*/
+**/
 int employee_removeEmployee(Employee* pArrayList, int len, int index, int id)
 {
 	int retorno = -1;
@@ -104,8 +102,7 @@ int employee_removeEmployee(Employee* pArrayList, int len, int index, int id)
 * \param len int Array lenght
 * \param pIndex int* Pointer to an empty position in the index.
 * \return int Return (-1) if Error [Invalid length or NULL pointer or if can't find a employee] - (0) if Ok
-*
-*/
+**/
 int employee_findEmpty(Employee* pArrayList, int len, int* pIndex)
 {
 	int retorno = -1;
@@ -130,7 +127,7 @@ int employee_findEmpty(Employee* pArrayList, int len, int* pIndex)
 * \param id int Receives the ID of the employee
 * \param pIndex int* Pointer to a loaded position in the index
 * \return int Return (-1) if Error [Invalid length or NULL pointer received or employee not found] - (0) if Ok
-*/
+**/
 int employee_findEmployeeById(Employee* pArrayList, int len, int* pIndex, int id)
 {
 	int retorno = -1;
@@ -156,9 +153,8 @@ int employee_findEmployeeById(Employee* pArrayList, int len, int* pIndex, int id
 * \param pArrayList Employee* Pointer to array of employees
 * \param len int Array lenght
 * \param index int Receives the index to which it will be assigned after modifications
- * \return (-1) Error / (0) Ok
- *
- */
+* \return (-1) Error / (0) Ok
+**/
 int employee_modifyEmployee(Employee* pArrayList, int len, int index)
 {
 	int retorno = -1;
@@ -186,8 +182,7 @@ int employee_modifyEmployee(Employee* pArrayList, int len, int index)
 * \param pArrayList Employee* Pointer to array of employees
 * \param len int Array lenght
 * \return int Return (-1) if Error [Invalid length or NULL pointer received or employee not found] - (0) if Ok
-*
-*/
+**/
 int employee_printEmployees(Employee* pArrayList, int len)
 {
 	int retorno = -1;
