@@ -17,8 +17,8 @@
 #define __LINKEDLIST
 struct Node
 {
-    void* pElement; //Puntero al elemento (persona, empleado, etc.)
-    struct Node* pNextNode; // Puntero al próximo nodo
+    void* pElement; // Puntero al elemento (persona, empleado, etc.)
+    struct Node* pNextNode; // Puntero al próximo nodo.
 }typedef Node;
 
 struct LinkedList

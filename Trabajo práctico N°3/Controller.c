@@ -296,7 +296,7 @@ int controller_saveAsBinary(char* path, LinkedList* pArrayListEmployee)
 {
 	int retorno = -1;
 
-	FILE* pArchivo;
+	FILE* pArchivo; // Puntero al archivo
 	Employee* pEmployee;
 
 	if(path != NULL && pArrayListEmployee != NULL)
@@ -304,6 +304,7 @@ int controller_saveAsBinary(char* path, LinkedList* pArrayListEmployee)
 		pArchivo = fopen(path, "wb");
 		if(pArchivo != NULL)
 		{
+			retorno = 0;
 			for(int i ; i < ll_len(pArrayListEmployee) ; i++)
 			{
 				pEmployee = (Employee*)ll_get(pArrayListEmployee, i);

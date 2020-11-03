@@ -346,6 +346,14 @@ int employee_getSueldoTxt(Employee* this, char* sueldo)
 	return retorno;
 }
 
+/*
+* \brief
+* \param
+* \param
+* \param
+* \param
+* \return
+*/
 int employee_sortEmployees(LinkedList* pArrayListEmployee)
 {
 	int retorno = -1;
@@ -355,24 +363,24 @@ int employee_sortEmployees(LinkedList* pArrayListEmployee)
 	{
 		do
 		{
-		if(utn_getIntConMinMax("\n1 - Sort the list by name."
-							   "\n2 - Sort the list by quantity of hours."
-							   "\n3 - Sort the list by salary."
-							   "\n4 - Exit.\n",
-							   "\nError, please select a correct option between 1 and 4.\n", &option, 1, 4, 3) == 0)
+		if(utn_getIntConMinMax("\n1 - Ordenar la lista por nombre."
+							   "\n2 - Ordenar la lista por cantidad de horas trabajadas."
+							   "\n3 - Ordenar la lista por salario."
+							   "\n4 - Salir.\n",
+							   "\nError, por favor elija una opción entre 1 y 4.\n", &option, 1, 4, 3) == 0)
 				{
 					switch(option)
 					{
 						case 1:
-							printf("\nYou sorted the employees by name in ascending order, now you can go back to the previous menu (select 4 and wait...)\n");
+							printf("\nUsted ordenó la lista por nombre de manera ascendente, ahora puede volver al menú anterior (opción 4, y espere...)\n");
 							ll_sort(pArrayListEmployee, employee_sortByName, 1);
 							break;
 						case 2:
-							printf("\nYou sorted the employees by hours in ascending order, now you can go back to the previous menu (select 4 and wait...)\n");
+							printf("\nUsted ordenó la lista por horas trabajadas de manera ascendente, ahora puede volver al menú anterior (opción 4, y espere...)\n");
 							ll_sort(pArrayListEmployee, employee_sortByHours, 1);
 							break;
 						case 3:
-							printf("\nYou sorted the employees by salary in ascending order, now you can go back to the previous menu (select 4 and wait...)\n");
+							printf("\nUsted ordenó la lista por salario de manera ascendente, ahora puede volver al menú anterior (opción 4, y espere...)\n");
 							ll_sort(pArrayListEmployee, employee_sortBySalary, 1);
 							break;
 					}
@@ -383,6 +391,14 @@ int employee_sortEmployees(LinkedList* pArrayListEmployee)
 	return retorno;
 }
 
+/*
+* \brief
+* \param
+* \param
+* \param
+* \param
+* \return
+*/
 int employee_sortByName(void* pFirstElem, void* pSecondElem)
 {
 	int retorno = 0;
@@ -404,6 +420,14 @@ int employee_sortByName(void* pFirstElem, void* pSecondElem)
 	return retorno;
 }
 
+/*
+* \brief
+* \param
+* \param
+* \param
+* \param
+* \return
+*/
 int employee_sortByHours(void* pFirstElem, void* pSecondElem)
 {
 	int retorno = 0;
@@ -425,6 +449,14 @@ int employee_sortByHours(void* pFirstElem, void* pSecondElem)
 	return retorno;
 }
 
+/*
+* \brief
+* \param
+* \param
+* \param
+* \param
+* \return
+*/
 int employee_sortBySalary(void* pFirstElem, void* pSecondElem)
 {
 	int retorno = 0;
@@ -446,6 +478,14 @@ int employee_sortBySalary(void* pFirstElem, void* pSecondElem)
 	return retorno;
 }
 
+/*
+* \brief
+* \param
+* \param
+* \param
+* \param
+* \return
+*/
 int employee_findIndexById(LinkedList* pArrayListEmployee, int id)
 {
     int retorno = -1;

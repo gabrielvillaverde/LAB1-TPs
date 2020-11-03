@@ -5,11 +5,6 @@
 #include "Employee.h"
 #include "utn.h"
 
-// ERRORES:
-
-// MODIFICAR: Me acepta valores de ID que no debería (fuera de -1 y más de 1000)
-// ELIMINAR: Me acepta valores de ID que no debería (fuera de -1 y más de 1000)
-
 int main()
 {
 	setbuf(stdout, NULL);
@@ -22,39 +17,53 @@ int main()
     {
     	if(utn_getIntConMinMax("\nBienvenido al sistema, elija una opción: \n\n"
     			"1  -  Cargar los datos de los empleados desde el archivo data.csv (modo texto).\n"
-    			"2  -  Cargar los datos de los empleados desde el archivo data.csv (modo binario).\n"
+    			"2  -  Cargar los datos de los empleados desde el archivo data.bin (modo binario).\n"
     			"3  -  Alta de empleado.\n"
     			"4  -  Modificar datos de empleado.\n"
     			"5  -  Baja de empleado.\n"
     			"6  -  Listar empleados.\n"
     			"7  -  Ordenar empleados.\n"
     			"8  -  Guardar los datos de los empleados en el archivo data.csv (modo texto).\n"
-    			"9  -  Guardar los datos de los empleados en el archivo data.csv (modo binario).\n"
+    			"9  -  Guardar los datos de los empleados en el archivo data.bin (modo binario).\n"
     			"10 -  Salir\n", "\nError, ingrese una opción entre 1 y 10.\n", &opcion, 1, 10, 3) == 0)
     	{
     		switch(opcion)
 			{
 				case 1:
-					controller_loadFromText("data.csv", listaEmpleados);
+					if(controller_loadFromText("data.csv", listaEmpleados) == 0)
+					{
+						printf("\nArchivo cargado como texto correctamente.\n");
+					}
+					else
+					{
+						printf("\nNo se pudo cargar el archivo como texto.\n");
+					}
 					break;
 				case 2:
-					controller_loadFromBinary("data.csv", listaEmpleados);
+					if(controller_loadFromBinary("data.bin", listaEmpleados) == 0)
+					{
+						printf("\nArchivo cargado como binario correctamente.\n");
+					}
+					else
+					{
+						printf("\nNo se pudo cargar el archivo como binario.\n");
+					}
 					break;
 				case 3:
 					if(ll_isEmpty(listaEmpleados) == 0)
 					{
 						if(controller_addEmployee(listaEmpleados, &id) == 0)
 						{
-							printf("\nEmployee registered correctly.\n");
+							printf("\nEmpleado dado de alta correctamente.\n");
 						}
 						else
 						{
-							printf("\Employee could not be registered.\n");
+							printf("\nNo se pudo dar de alta el empleado.\n");
 						}
 					}
 					else
 					{
-						printf("\nPlease load the file first.\n");
+						printf("\nPrimero cargue el archivo.\n");
 					}
 					break;
 				case 4:
@@ -62,16 +71,16 @@ int main()
 					{
 						if(controller_editEmployee(listaEmpleados) == 0)
 						{
-							printf("\nEmployee modified correctly.\n");
+							printf("\nEmpleado modificado correctamente.\n");
 						}
 						else
 						{
-							printf("\Employee could not be modified.\n");
+							printf("\nNo se pudo modificar al empleado.\n");
 						}
 					}
 					else
 					{
-						printf("\nPlease load the file first.\n");
+						printf("\nPrimero cargue el archivo.\n");
 					}
 					break;
 				case 5:
@@ -79,16 +88,16 @@ int main()
 					{
 						if(controller_removeEmployee(listaEmpleados) == 0)
 						{
-							printf("Employee removed correctly.\n");
+							printf("Empleado eliminado correctamente.\n");
 						}
 						else
 						{
-							printf("\nEmployee could not be removed.\n");
+							printf("\nNo se pudo eliminar al empleado.\n");
 						}
 					}
 					else
 					{
-						printf("\nPlease load the file first.\n");
+						printf("\nPrimero cargue el archivo.\n");
 					}
 					break;
 				case 6:
@@ -98,7 +107,7 @@ int main()
 					}
 					else
 					{
-						printf("\nPlease load the file first.\n");
+						printf("\nPrimero cargue el archivo.\n");
 					}
 					break;
 				case 7:
@@ -108,7 +117,7 @@ int main()
 					}
 					else
 					{
-						printf("\nPlease load the file first.\n");
+						printf("\nPrimero cargue el archivo.\n");
 					}
 					break;
 				case 8:
@@ -116,34 +125,34 @@ int main()
 					{
 						if(controller_saveAsText("data.csv", listaEmpleados) == 0)
 						{
-							printf("\nFile saved as text successfully.\n");
+							printf("\nArchivo guardado como texto correctamente.\n");
 						}
 						else
 						{
-							printf("\nFile could not be saved as text.\n");
+							printf("\nEl archivo no se pudo guardar como texto.\n");
 						}
 					}
 					else
 					{
-						printf("\nPlease load the file first.\n");
+						printf("\nPrimero cargue el archivo.\n");
 					}
 
 					break;
 				case 9:
 					if(ll_isEmpty(listaEmpleados) == 0)
 					{
-						if(controller_saveAsBinary("data.csv", listaEmpleados) == 0)
+						if(controller_saveAsBinary("data.bin", listaEmpleados) == 0)
 						{
-							printf("\nFile saved as binary successfully.\n");
+							printf("\nArchivo guardado como binario correctamente.\n");
 						}
 						else
 						{
-							printf("\nFile could not be saved as binary.\n");
+							printf("\nEl archivo no se pudo guardar como binario.\n");
 						}
 					}
 					else
 					{
-						printf("\nPlease load the file first.\n");
+						printf("\nPrimero cargue el archivo.\n");
 					}
 					break;
 			}

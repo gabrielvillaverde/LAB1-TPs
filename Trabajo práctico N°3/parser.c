@@ -53,20 +53,20 @@ int parser_EmployeeFromBinary(FILE* pFile, LinkedList* pArrayListEmployee)
 {
 	int retorno = -1;
 
-	Employee* pEmployee;
+	Employee* pAux;
 
 	if(pFile != NULL && pArrayListEmployee != NULL)
 	{
 		do
 		{
-			pEmployee = employee_new();
-			if(pEmployee != NULL && fread(pEmployee, sizeof(Employee), 1, pFile) == 1)
+			pAux = employee_new();
+			if(pAux != NULL && fread(pAux, sizeof(Employee), 1, pFile) == 1)
 			{
-				ll_add(pArrayListEmployee, pEmployee);
+				ll_add(pArrayListEmployee, pAux);
 			}
 			else
 			{
-				break;
+				employee_delete(pAux);
 			}
 		}while(feof(pFile) == 0);
 	}
