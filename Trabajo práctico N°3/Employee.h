@@ -31,9 +31,9 @@ int employee_setSueldoTxt(Employee* this, char* sueldo);
 int employee_getSueldoTxt(Employee* this, char* sueldo);
 
 int employee_sortEmployees(LinkedList* pArrayListEmployee);
-int employee_sortByName(void* pFirstElem, void* pSecondElem);
-int employee_sortByHours(void* pFirstElem, void* pSecondElem);
-int employee_sortBySalary(void* pFirstElem, void* pSecondElem);
+int employee_compareByName(void* pFirstElem, void* pSecondElem);
+int employee_compareByHours(void* pFirstElem, void* pSecondElem);
+int employee_compareBySalary(void* pFirstElem, void* pSecondElem);
 
 int employee_findIndexById(LinkedList* pArrayListEmployee, int id);
 

@@ -7,12 +7,8 @@
 #include "utn.h"
 
 /*
-* \brief
-* \param
-* \param
-* \param
-* \param
-* \return
+* \brief Función que genera un nuevo empleado en memoria.
+* \return un nuevo empleado.
 */
 Employee* employee_new()
 {
@@ -22,12 +18,12 @@ Employee* employee_new()
 }
 
 /*
-* \brief
-* \param
-* \param
-* \param
-* \param
-* \return
+* \brief Función que genera un nuevo empleado con parámetros.
+* \param char* ID a setear.
+* \param char* nombre a setear.
+* \param char* horas trabajadas a setear.
+* \param char* sueldo a setear.
+* \return (-1) Error (0) todo OK
 */
 Employee* employee_newParametros(char* idStr, char* nombreStr, char* horasTrabajadasStr, char* sueldoStr)
 {
@@ -49,12 +45,7 @@ Employee* employee_newParametros(char* idStr, char* nombreStr, char* horasTrabaj
 }
 
 /*
-* \brief
-* \param
-* \param
-* \param
-* \param
-* \return
+* \brief Función que elimina un empleado de memoria.
 */
 void employee_delete(Employee* this)
 {
@@ -64,15 +55,11 @@ void employee_delete(Employee* this)
 	}
 }
 
-// SETTERS AND GETTERS
-
 /*
-* \brief
-* \param
-* \param
-* \param
-* \param
-* \return
+* \brief Función que setea el ID como texto.
+* \param Employee* puntero a empleado.
+* \param char* ID a cargar.
+* \return (-1) Error (0) todo OK
 */
 int employee_setIdTxt(Employee* this, char* id)
 {
@@ -89,12 +76,10 @@ int employee_setIdTxt(Employee* this, char* id)
 }
 
 /*
-* \brief
-* \param
-* \param
-* \param
-* \param
-* \return
+* \brief Función que obtiene el ID como texto.
+* \param Employee* puntero al empleado.
+* \param char* puntero al espacio donde guardará el ID.
+* \return (-1) Error (0) todo OK
 */
 int employee_getIdTxt(Employee* this, char* id)
 {
@@ -108,12 +93,10 @@ int employee_getIdTxt(Employee* this, char* id)
 }
 
 /*
-* \brief
-* \param
-* \param
-* \param
-* \param
-* \return
+* \brief Función que setea el ID como int
+* \param Employee* puntero a empleado.
+* \param int ID a cargar.
+* \return (-1) Error (0) todo OK
 */
 int employee_setId(Employee* this, int id)
 {
@@ -127,12 +110,10 @@ int employee_setId(Employee* this, int id)
 }
 
 /*
-* \brief
+* \brief Función que obtiene el ID como int.
+* \param Employee* puntero a empleado.
 * \param
-* \param
-* \param
-* \param
-* \return
+* \return (-1) Error (0) todo OK
 */
 int employee_getId(Employee* this, int* id)
 {
@@ -146,12 +127,10 @@ int employee_getId(Employee* this, int* id)
 }
 
 /*
-* \brief
-* \param
-* \param
-* \param
-* \param
-* \return
+* \brief Función que setea el ID como texto.
+* \param Employee* puntero a empleado.
+* \param char* ID a cargar.
+* \return (-1) Error (0) todo OK
 */
 int employee_setNombre(Employee* this, char* nombre)
 {
@@ -168,12 +147,10 @@ int employee_setNombre(Employee* this, char* nombre)
 }
 
 /*
-* \brief
+* \brief Función que obtiene el ID como int.
+* \param Employee* puntero a empleado.
 * \param
-* \param
-* \param
-* \param
-* \return
+* \return (-1) Error (0) todo OK
 */
 int employee_getNombre(Employee* this, char* nombre)
 {
@@ -187,12 +164,10 @@ int employee_getNombre(Employee* this, char* nombre)
 }
 
 /*
-* \brief
-* \param
-* \param
-* \param
-* \param
-* \return
+* \brief Función que setea el ID como texto.
+* \param Employee* puntero a empleado.
+* \param char* ID a cargar.
+* \return (-1) Error (0) todo OK
 */
 int employee_setHorasTrabajadas(Employee* this, int horasTrabajadas)
 {
@@ -207,12 +182,10 @@ int employee_setHorasTrabajadas(Employee* this, int horasTrabajadas)
 }
 
 /*
-* \brief
+* \brief Función que obtiene el ID como int.
+* \param Employee* puntero a empleado.
 * \param
-* \param
-* \param
-* \param
-* \return
+* \return (-1) Error (0) todo OK
 */
 int employee_getHorasTrabajadas(Employee* this, int* horasTrabajadas)
 {
@@ -227,12 +200,10 @@ int employee_getHorasTrabajadas(Employee* this, int* horasTrabajadas)
 }
 
 /*
-* \brief
-* \param
-* \param
-* \param
-* \param
-* \return
+* \brief Función que setea el ID como texto.
+* \param Employee* puntero a empleado.
+* \param char* ID a cargar.
+* \return (-1) Error (0) todo OK
 */
 int employee_setHorasTrabajadasTxt(Employee* this, char* horasTrabajadas)
 {
@@ -249,12 +220,10 @@ int employee_setHorasTrabajadasTxt(Employee* this, char* horasTrabajadas)
 }
 
 /*
-* \brief
+* \brief Función que obtiene el ID como int.
+* \param Employee* puntero a empleado.
 * \param
-* \param
-* \param
-* \param
-* \return
+* \return (-1) Error (0) todo OK
 */
 int employee_getHorasTrabajadasTxt(Employee* this, char* horasTrabajadas)
 {
@@ -268,12 +237,10 @@ int employee_getHorasTrabajadasTxt(Employee* this, char* horasTrabajadas)
 }
 
 /*
-* \brief
-* \param
-* \param
-* \param
-* \param
-* \return
+* \brief Función que setea el ID como texto.
+* \param Employee* puntero a empleado.
+* \param char* ID a cargar.
+* \return (-1) Error (0) todo OK
 */
 int employee_setSueldo(Employee* this, int sueldo)
 {
@@ -287,12 +254,10 @@ int employee_setSueldo(Employee* this, int sueldo)
 }
 
 /*
-* \brief
+* \brief Función que obtiene el ID como int.
+* \param Employee* puntero a empleado.
 * \param
-* \param
-* \param
-* \param
-* \return
+* \return (-1) Error (0) todo OK
 */
 int employee_getSueldo(Employee* this, int* sueldo)
 {
@@ -306,12 +271,10 @@ int employee_getSueldo(Employee* this, int* sueldo)
 }
 
 /*
-* \brief
-* \param
-* \param
-* \param
-* \param
-* \return
+* \brief Función que setea el ID como texto.
+* \param Employee* puntero a empleado.
+* \param char* ID a cargar.
+* \return (-1) Error (0) todo OK
 */
 int employee_setSueldoTxt(Employee* this, char* sueldo)
 {
@@ -328,12 +291,10 @@ int employee_setSueldoTxt(Employee* this, char* sueldo)
 }
 
 /*
-* \brief
+* \brief Función que obtiene el ID como int.
+* \param Employee* puntero a empleado.
 * \param
-* \param
-* \param
-* \param
-* \return
+* \return (-1) Error (0) todo OK
 */
 int employee_getSueldoTxt(Employee* this, char* sueldo)
 {
@@ -347,12 +308,8 @@ int employee_getSueldoTxt(Employee* this, char* sueldo)
 }
 
 /*
-* \brief
-* \param
-* \param
-* \param
-* \param
-* \return
+* \brief Función que ordena los empleados
+* \return (-1) Error (0) todo OK
 */
 int employee_sortEmployees(LinkedList* pArrayListEmployee)
 {
@@ -373,33 +330,30 @@ int employee_sortEmployees(LinkedList* pArrayListEmployee)
 					{
 						case 1:
 							printf("\nUsted ordenó la lista por nombre de manera ascendente, ahora puede volver al menú anterior (opción 4, y espere...)\n");
-							ll_sort(pArrayListEmployee, employee_sortByName, 1);
+							ll_sort(pArrayListEmployee, employee_compareByName, 1);
 							break;
 						case 2:
 							printf("\nUsted ordenó la lista por horas trabajadas de manera ascendente, ahora puede volver al menú anterior (opción 4, y espere...)\n");
-							ll_sort(pArrayListEmployee, employee_sortByHours, 1);
+							ll_sort(pArrayListEmployee, employee_compareByHours, 1);
 							break;
 						case 3:
 							printf("\nUsted ordenó la lista por salario de manera ascendente, ahora puede volver al menú anterior (opción 4, y espere...)\n");
-							ll_sort(pArrayListEmployee, employee_sortBySalary, 1);
+							ll_sort(pArrayListEmployee, employee_compareBySalary, 1);
 							break;
 					}
 				}
 		}while(option != 4);
 	}
-
 	return retorno;
 }
 
 /*
-* \brief
-* \param
-* \param
-* \param
-* \param
-* \return
+* \brief Función que compara los nombres
+* \param puntero al primer elemento.
+* \param puntero al segundo elemento.
+* \return (-1) Error (0) todo OK
 */
-int employee_sortByName(void* pFirstElem, void* pSecondElem)
+int employee_compareByName(void* pFirstElem, void* pSecondElem)
 {
 	int retorno = 0;
 
@@ -413,7 +367,8 @@ int employee_sortByName(void* pFirstElem, void* pSecondElem)
 	{
 		retorno = 1;
 	}
-	else if(strncmp(firstName, secondName, 100) < 0)
+	else
+	if(strncmp(firstName, secondName, 100) < 0)
 	{
 		retorno = -1;
 	}
@@ -421,14 +376,12 @@ int employee_sortByName(void* pFirstElem, void* pSecondElem)
 }
 
 /*
-* \brief
-* \param
-* \param
-* \param
-* \param
-* \return
+* \brief Función que compara las horas trabajadas
+* \param puntero al primer elemento.
+* \param puntero al segundo elemento.
+* \return (-1) Error (0) todo OK
 */
-int employee_sortByHours(void* pFirstElem, void* pSecondElem)
+int employee_compareByHours(void* pFirstElem, void* pSecondElem)
 {
 	int retorno = 0;
 
@@ -450,14 +403,12 @@ int employee_sortByHours(void* pFirstElem, void* pSecondElem)
 }
 
 /*
-* \brief
-* \param
-* \param
-* \param
-* \param
-* \return
+* \brief Función que compara los salarios.
+* \param puntero al primer elemento.
+* \param puntero al segundo elemento.
+* \return (-1) Error (0) todo OK
 */
-int employee_sortBySalary(void* pFirstElem, void* pSecondElem)
+int employee_compareBySalary(void* pFirstElem, void* pSecondElem)
 {
 	int retorno = 0;
 
@@ -479,12 +430,10 @@ int employee_sortBySalary(void* pFirstElem, void* pSecondElem)
 }
 
 /*
-* \brief
-* \param
-* \param
-* \param
-* \param
-* \return
+* \brief Función que busca un índice por ID.
+* \param LinkedList* puntero al array de empleados.
+* \param int recibe el ID.
+* \return (-1) Error (0) todo OK
 */
 int employee_findIndexById(LinkedList* pArrayListEmployee, int id)
 {
@@ -493,7 +442,7 @@ int employee_findIndexById(LinkedList* pArrayListEmployee, int id)
 
     Employee* pEmployee;
 
-    for(int i = 0; i < ll_len(pArrayListEmployee); i++)
+    for(int i = 0 ; i < ll_len(pArrayListEmployee) ; i++)
     {
         pEmployee = ll_get(pArrayListEmployee, i);
         if(employee_getId(pEmployee, &idAux) == 0 && idAux == id)

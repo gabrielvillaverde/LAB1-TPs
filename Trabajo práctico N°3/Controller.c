@@ -59,6 +59,86 @@ int controller_loadFromBinary(char* path , LinkedList* pArrayListEmployee)
     return retorno;
 }
 
+/** \brief Guarda los datos de los empleados en el archivo data.csv (modo texto).
+ *
+ * \param path char*
+ * \param pArrayListEmployee LinkedList*
+ * \return int
+ *
+ */
+int controller_saveAsText(char* path, LinkedList* pArrayListEmployee)
+{
+	int retorno = -1;
+
+	FILE* pArchivo;
+	Employee* pEmployee;
+
+	char id[10000];
+	char nombre[10000];
+	char horasTrabajadas[10000];
+	char sueldo[10000];
+
+	if(path != NULL && pArrayListEmployee != NULL)
+	{
+		pArchivo = fopen(path, "w");
+		if(pArchivo != NULL)
+		{
+			retorno = 0;
+			for(int i ; i < ll_len(pArrayListEmployee) ; i++)
+			{
+				pEmployee = ll_get(pArrayListEmployee, i);
+				if(pEmployee != NULL)
+				{
+					if( !employee_getIdTxt(pEmployee, id) &&
+					    !employee_getNombre(pEmployee, nombre) &&
+					    !employee_getHorasTrabajadasTxt(pEmployee, horasTrabajadas) &&
+					    !employee_getSueldoTxt(pEmployee, sueldo) )
+					{
+						fprintf(pArchivo, "%s, %s, %s, %s\n", id, nombre, horasTrabajadas, sueldo);
+					}
+				}
+			}
+			fclose(pArchivo);
+		}
+	}
+    return retorno;
+}
+
+/** \brief Guarda los datos de los empleados en el archivo data.csv (modo binario).
+ *
+ * \param path char*
+ * \param pArrayListEmployee LinkedList*
+ * \return int
+ *
+ */
+int controller_saveAsBinary(char* path, LinkedList* pArrayListEmployee)
+{
+	int retorno = -1;
+
+	FILE* pArchivo; // Puntero al archivo
+	Employee* pEmployee;
+
+	if(path != NULL && pArrayListEmployee != NULL)
+	{
+		pArchivo = fopen(path, "wb");
+		if(pArchivo != NULL)
+		{
+			retorno = 0;
+			for(int i ; i < ll_len(pArrayListEmployee) ; i++)
+			{
+				pEmployee = (Employee*)ll_get(pArrayListEmployee, i);
+				if(pEmployee != NULL)
+				{
+					fwrite(pEmployee, sizeof(Employee), 1, pArchivo);
+				}
+			}
+			fclose(pArchivo);
+		}
+	}
+    return retorno;
+}
+
+
 /** \brief Alta de empleados
  *
  * \param path char*
@@ -222,7 +302,7 @@ int controller_ListEmployee(LinkedList* pArrayListEmployee)
 }
 
 /** \brief Ordenar empleados
- *
+
  * \param path char*
  * \param pArrayListEmployee LinkedList*
  * \return int
@@ -236,85 +316,6 @@ int controller_sortEmployee(LinkedList* pArrayListEmployee)
 	{
 		employee_sortEmployees(pArrayListEmployee);
 		retorno = 0;
-	}
-    return retorno;
-}
-
-/** \brief Guarda los datos de los empleados en el archivo data.csv (modo texto).
- *
- * \param path char*
- * \param pArrayListEmployee LinkedList*
- * \return int
- *
- */
-int controller_saveAsText(char* path, LinkedList* pArrayListEmployee)
-{
-	int retorno = -1;
-
-	FILE* pArchivo;
-	Employee* pEmployee;
-
-	char id[10000];
-	char nombre[10000];
-	char horasTrabajadas[10000];
-	char sueldo[10000];
-
-	if(path != NULL && pArrayListEmployee != NULL)
-	{
-		pArchivo = fopen(path, "w");
-		if(pArchivo != NULL)
-		{
-			retorno = 0;
-			for(int i ; i < ll_len(pArrayListEmployee) ; i++)
-			{
-				pEmployee = ll_get(pArrayListEmployee, i);
-				if(pEmployee != NULL)
-				{
-					if( !employee_getIdTxt(pEmployee, id) &&
-					    !employee_getNombre(pEmployee, nombre) &&
-					    !employee_getHorasTrabajadasTxt(pEmployee, horasTrabajadas) &&
-					    !employee_getSueldoTxt(pEmployee, sueldo) )
-					{
-						fprintf(pArchivo, "%s, %s, %s, %s\n", id, nombre, horasTrabajadas, sueldo);
-					}
-				}
-			}
-			fclose(pArchivo);
-		}
-	}
-    return retorno;
-}
-
-/** \brief Guarda los datos de los empleados en el archivo data.csv (modo binario).
- *
- * \param path char*
- * \param pArrayListEmployee LinkedList*
- * \return int
- *
- */
-int controller_saveAsBinary(char* path, LinkedList* pArrayListEmployee)
-{
-	int retorno = -1;
-
-	FILE* pArchivo; // Puntero al archivo
-	Employee* pEmployee;
-
-	if(path != NULL && pArrayListEmployee != NULL)
-	{
-		pArchivo = fopen(path, "wb");
-		if(pArchivo != NULL)
-		{
-			retorno = 0;
-			for(int i ; i < ll_len(pArrayListEmployee) ; i++)
-			{
-				pEmployee = (Employee*)ll_get(pArrayListEmployee, i);
-				if(pEmployee != NULL)
-				{
-					fwrite(pEmployee, sizeof(Employee), 1, pArchivo);
-				}
-			}
-			fclose(pArchivo);
-		}
 	}
     return retorno;
 }

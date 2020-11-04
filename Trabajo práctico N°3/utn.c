@@ -49,18 +49,18 @@ int myGets(char *pCadena, int len)
  */
 int utn_isAlphabetic(char *pCadena)
 {
-    int output = 1;
+    int retorno = 1;
     if(pCadena != NULL){
-        for(int x = 0 ; pCadena[x] != '\0' ; x++)
+        for(int i = 0 ; pCadena[i] != '\0' ; i++)
         {
-            if((pCadena[x] < 'A' || pCadena[x] > 'z') && (pCadena[x] > 'Z' || pCadena[x] < 'a') && pCadena[x] != ' ' && pCadena[x] != '-')
+            if((pCadena[i] < 'A' || pCadena[i] > 'z') && (pCadena[i] > 'Z' || pCadena[i] < 'a') && pCadena[i] != ' ' && pCadena[i] != '-')
             {
-                output = 0;
+            	retorno = 0;
                 break;
             }
         }
     }
-    return output;
+    return retorno;
 }
 
 /**
@@ -75,7 +75,8 @@ int utn_isAlphabetic(char *pCadena)
 int utn_getString(char *msg, char *msgError, char *pCadena, int limite, int reintentos)
 {
     int retorno = -1;
-    if (msg != NULL && msgError != NULL && pCadena != NULL && limite > 0 && reintentos > 0)
+
+    if(msg != NULL && msgError != NULL && pCadena != NULL && limite > 0 && reintentos > 0)
     {
         do
         {
@@ -83,7 +84,8 @@ int utn_getString(char *msg, char *msgError, char *pCadena, int limite, int rein
             if (!(myGets(pCadena, limite)) && utn_isAlphabetic(pCadena))
             {
             	retorno = 0;
-            } else
+            }
+            else
             {
                 reintentos--;
                 if (reintentos > 0)
@@ -91,7 +93,7 @@ int utn_getString(char *msg, char *msgError, char *pCadena, int limite, int rein
                     printf("\nLe quedan %d reintentos.\n", reintentos);
                 }
             }
-        } while (retorno != 0 && reintentos > 0);
+        }while (retorno != 0 && reintentos > 0);
     }
     return retorno;
 }
@@ -104,15 +106,15 @@ int utn_getString(char *msg, char *msgError, char *pCadena, int limite, int rein
 int utn_isAlphanumeric(char *pCadena)
 {
     int retorno = 1;
+
     if(pCadena !=NULL)
     {
-        for(int x = 0 ; pCadena[x] != '\0' ; x++)
+        for(int i = 0 ; pCadena[i] != '\0' ; i++)
         {
-            if(
-               (pCadena[x] < '0' || pCadena[x] > 'z')
-            && (pCadena[x] > '9' || pCadena[x] < 'A')
-            && (pCadena[x] > 'Z' || pCadena[x] < 'a')
-            && pCadena[x] != ' ')
+            if((pCadena[i] < '0' || pCadena[i] > 'z')
+            && (pCadena[i] > '9' || pCadena[i] < 'A')
+            && (pCadena[i] > 'Z' || pCadena[i] < 'a')
+            && pCadena[i] != ' ')
             {
             	retorno = 0;
                 break;
@@ -130,11 +132,12 @@ int utn_isAlphanumeric(char *pCadena)
 int utn_isNumeric(char *pCadena)
 {
     int retorno = 1;
+
     if(pCadena !=NULL)
     {
-        for(int x = 0 ; pCadena[x] != '\0' ; x++)
+        for(int i = 0 ; pCadena[i] != '\0' ; i++)
         {
-            if(pCadena[x] < '0' || pCadena[x] > '9')
+            if(pCadena[i] < '0' || pCadena[i] > '9')
             {
             	retorno = 0;
                 break;
@@ -155,16 +158,17 @@ int utn_isNumeric(char *pCadena)
 int utn_getStringWithNumbers(char *msg, char *msgError, char *pCadena, int limite, int reintentos)
 {
     int retorno = -1;
-    if (msg != NULL && msgError != NULL && pCadena != NULL && limite > 0 && reintentos > 0)
+
+    if(msg != NULL && msgError != NULL && pCadena != NULL && limite > 0 && reintentos > 0)
     {
         do
         {
             printf("%s", msg);
-            if (!(myGets(pCadena, limite)) && utn_isAlphanumeric(pCadena))
+            if(!(myGets(pCadena, limite)) && utn_isAlphanumeric(pCadena))
             {
-                for(int x = 0; x<limite; x++)
+                for(int i = 0; i<limite; i++)
                 {
-                    pCadena[x] = toupper(pCadena[x]);
+                    pCadena[i] = toupper(pCadena[i]);
                 }
                 retorno = 0;
             }
@@ -176,7 +180,7 @@ int utn_getStringWithNumbers(char *msg, char *msgError, char *pCadena, int limit
                     printf("\nLe quedan %d reintentos.\n", reintentos);
                 }
             }
-        } while (retorno != 0 && reintentos > 0);
+        } while(retorno != 0 && reintentos > 0);
     }
     return retorno;
 }
@@ -193,16 +197,17 @@ int utn_getStringWithNumbers(char *msg, char *msgError, char *pCadena, int limit
 int utn_getStringWithOnlyNumbers(char *msg, char *msgError, char *pCadena, int limite, int reintentos)
 {
     int retorno = -1;
+
     if(msg != NULL && msgError != NULL && pCadena != NULL && limite > 0 && reintentos > 0)
     {
         do
         {
             printf("%s", msg);
-            if (!(myGets(pCadena, limite)) && utn_isNumeric(pCadena))
+            if(!(myGets(pCadena, limite)) && utn_isNumeric(pCadena))
             {
-                for(int x = 0; x<limite; x++)
+                for(int i = 0; i<limite; i++)
                 {
-                    pCadena[x] = toupper(pCadena[x]);
+                    pCadena[i] = toupper(pCadena[i]);
                 }
                 retorno = 0;
             }
@@ -214,7 +219,7 @@ int utn_getStringWithOnlyNumbers(char *msg, char *msgError, char *pCadena, int l
                     printf("\nLe quedan %d reintentos.\n", reintentos);
                 }
             }
-        }while (retorno != 0 && reintentos > 0);
+        }while(retorno != 0 && reintentos > 0);
     }
     return retorno;
 }
