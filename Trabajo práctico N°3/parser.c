@@ -5,13 +5,12 @@
 #include "Controller.h"
 #include "parser.h"
 
-/** \brief Parsea los datos los datos de los empleados desde el archivo data.csv (modo texto).
- *
- * \param path char*
- * \param pArrayListEmployee LinkedList*
- * \return int
- *
- */
+/*
+* \brief Parsea los datos los datos de los empleados desde el archivo data.csv (modo texto).
+* \param FILE* puntero al archivo.
+* \param pArrayListEmployee LinkedList* puntero al array de empleados.
+* \return (-1) Error (0) todo OK
+*/
 int parser_EmployeeFromText(FILE* pFile, LinkedList* pArrayListEmployee)
 {
 	int retorno = -1;
@@ -42,13 +41,12 @@ int parser_EmployeeFromText(FILE* pFile, LinkedList* pArrayListEmployee)
     return retorno;
 }
 
-/** \brief Parsea los datos los datos de los empleados desde el archivo data.csv (modo binario).
- *
- * \param path char*
- * \param pArrayListEmployee LinkedList*
- * \return int
- *
- */
+/*
+* \brief Parsea los datos los datos de los empleados desde el archivo data.csv (modo binario).
+* \param FILE* puntero al archivo.
+* \param pArrayListEmployee LinkedList* puntero al array de empleados.
+* \return (-1) Error (0) todo OK
+*/
 int parser_EmployeeFromBinary(FILE* pFile, LinkedList* pArrayListEmployee)
 {
 	int retorno = -1;

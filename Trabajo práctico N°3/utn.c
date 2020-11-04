@@ -236,6 +236,7 @@ int utn_getStringWithOnlyNumbers(char *msg, char *msgError, char *pCadena, int l
 int utn_getStringWithNumbersAndSymbols(char *msg, char *msgError, char *pCadena, int limite, int reintentos)
 {
     int retorno = -1;
+
     if(msg != NULL && msgError != NULL && pCadena != NULL && limite > 0 && reintentos > 0)
     {
         do
@@ -243,9 +244,9 @@ int utn_getStringWithNumbersAndSymbols(char *msg, char *msgError, char *pCadena,
             printf("%s", msg);
             if (!(myGets(pCadena, limite)))
             {
-                for(int x = 0 ; x<limite ; x++)
+                for(int i = 0 ; i<limite ; i++)
                 {
-                    pCadena[x] = tolower(pCadena[x]);
+                    pCadena[i] = tolower(pCadena[i]);
                 }
                 retorno = 0;
             }
@@ -346,14 +347,13 @@ int utn_isIntNumber(char *numberToValidate)
     int retorno = 0;
     int contadorSignoNegativo = 0;
 
-    if (numberToValidate != NULL)
+    if(numberToValidate != NULL)
     {
-        for (int x = 0; numberToValidate[x] != '\0'; x++)
+        for (int i = 0 ; numberToValidate[i] != '\0' ; i++)
         {
-            if ((numberToValidate[x] >= '0' && numberToValidate[x] <= '9')
-                    || numberToValidate[x] == '-')
+            if ((numberToValidate[i] >= '0' && numberToValidate[i] <= '9') || numberToValidate[i] == '-')
             {
-                if (numberToValidate[x] == '-')
+                if (numberToValidate[i] == '-')
                 {
                     contadorSignoNegativo++;
                 }
@@ -382,32 +382,36 @@ int utn_isIntNumber(char *numberToValidate)
  * \param reintentos La cantidad de veces que el usuario puede reintentar en caso de error
  * \return (-1) Error (0) todo OK
  */
-int utn_getFloat(char *msg, char *msgError, float *pResultado, int reintentos) {
-    int output = -1;
+int utn_getFloat(char *msg, char *msgError, float *pResultado, int reintentos)
+{
+    int retorno = -1;
     char bufferFloat[20];
-    if (msg != NULL && msgError != NULL && pResultado != NULL
-            && reintentos > 0) {
-        do {
+
+    if(msg != NULL && msgError != NULL && pResultado != NULL && reintentos > 0)
+    {
+        do
+        {
             printf("%s", msg);
-            if (!(myGets(bufferFloat, sizeof(bufferFloat)))
-                    && utn_isFloatNumber(bufferFloat)) {
-                output = 0;
+            if(!(myGets(bufferFloat, sizeof(bufferFloat))) && utn_isFloatNumber(bufferFloat))
+            {
+            	retorno = 0;
                 *pResultado = atof(bufferFloat);
-            } else {
+            }
+            else
+            {
                 reintentos--;
-                if (reintentos > 0) {
+                if(reintentos > 0)
+                {
                     printf("\nLe quedan %d reintentos.\n", reintentos);
                 }
             }
-        } while (output != 0 && reintentos > 0);
+        }while (retorno != 0 && reintentos > 0);
     }
-    return output;
+    return retorno;
 }
 
 /**
- * \fn int utn_getFloatConMinMax(char*, char*, float*, float, float, int)
- * \brief Funcion que solicita por stdin el ingreso de un numero de punto flotante
- *
+ * \brief Función que solicita por stdin el ingreso de un número flotante
  * \param msg: El puntero a char que solicita el ingreso de una cadena
  * \param msgError: El puntero a char que informa de un error
  * \param pResultado: El puntero a float donde se guardara el numero ingresado
@@ -416,55 +420,57 @@ int utn_getFloat(char *msg, char *msgError, float *pResultado, int reintentos) {
  * \param reintentos La cantidad de veces que el usuario puede reintentar en caso de error
  * \return (-1) Error (0) todo OK
  */
-int utn_getFloatConMinMax(char *msg, char *msgError, float *pResultado, float min, float max, int reintentos) {
-    int output = -1;
+int utn_getFloatConMinMax(char *msg, char *msgError, float *pResultado, float min, float max, int reintentos)
+{
+    int retorno = -1;
     char bufferFloat[20];
+
     if (msg != NULL && msgError != NULL && pResultado != NULL
-            && reintentos > 0) {
-        do {
+            && reintentos > 0)
+    {
+        do
+        {
             printf("%s", msg);
-            if (!(myGets(bufferFloat, sizeof(bufferFloat)))
-                    && utn_isFloatNumber(bufferFloat)
-                    && (atof(bufferFloat) >= min && atof(bufferFloat) <= max)) {
-                output = 0;
+            if (!(myGets(bufferFloat, sizeof(bufferFloat))) && utn_isFloatNumber(bufferFloat) && (atof(bufferFloat) >= min && atof(bufferFloat) <= max))
+            {
+            	retorno = 0;
                 *pResultado = atof(bufferFloat);
-            } else {
+            }
+            else
+            {
                 reintentos--;
-                if (reintentos > 0) {
+                if (reintentos > 0)
+                {
                     printf("\nLe quedan %d reintentos.\n", reintentos);
                 }
             }
-        } while (output != 0 && reintentos > 0);
+        }while (retorno != 0 && reintentos > 0);
     }
-    return output;
+    return retorno;
 }
 
 /**
- * \fn int utn_isFloatNumber(char*)
- * \brief Funcion que valida si una cadena es un numero de punto flotante
- *
- * \param numberToValidate: El puntero a char que la funcion debe validar
+ * \brief Función que valida si una cadena es un numero de punto flotante
+ * \param numberToValidate: El puntero a char que la función debe validar
  * \return (-1) Error (0) todo OK
  */
 int utn_isFloatNumber(char *numberToValidate)
 {
     int retorno = 0;
-
     unsigned int contadorSignoNegativo = 0;
     unsigned int contadorPunto = 0;
 
-    if (numberToValidate != NULL)
+    if(numberToValidate != NULL)
     {
-        for (int x = 0; numberToValidate[x] != '\0'; x++)
+        for (int i = 0; numberToValidate[i] != '\0'; i++)
         {
-            if ((numberToValidate[x] >= '0' && numberToValidate[x] <= '9')
-                    || (numberToValidate[x] == '.' || numberToValidate[x] == '-'))
+            if ((numberToValidate[i] >= '0' && numberToValidate[i] <= '9') || (numberToValidate[i] == '.' || numberToValidate[i] == '-'))
             {
-                if (numberToValidate[x] == '-')
+                if (numberToValidate[i] == '-')
                 {
                     contadorSignoNegativo++;
                 }
-                if (numberToValidate[x] == '.')
+                if (numberToValidate[i] == '.')
                 {
                     contadorPunto++;
                 }

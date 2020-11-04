@@ -6,14 +6,12 @@
 #include "parser.h"
 #include "utn.h"
 
-
-/** \brief Carga los datos de los empleados desde el archivo data.csv (modo texto).
- *
- * \param path char*
- * \param pArrayListEmployee LinkedList*
- * \return int
- *
- */
+/*
+* \brief Función que carga los datos de los empleados desde el archivo data.csv (modo texto).
+* \param path char* es la ruta del archivo.
+* \param pArrayListEmployee LinkedList* es el puntero al array de empleados.
+* \return (-1) Error (0) todo OK
+*/
 int controller_loadFromText(char* path, LinkedList* pArrayListEmployee)
 {
 	int retorno = -1;
@@ -33,13 +31,12 @@ int controller_loadFromText(char* path, LinkedList* pArrayListEmployee)
     return retorno;
 }
 
-/** \brief Carga los datos de los empleados desde el archivo data.csv (modo binario).
- *
- * \param path char*
- * \param pArrayListEmployee LinkedList*
- * \return int
- *
- */
+/*
+* \brief Función que carga los datos de los empleados desde el archivo data.bin (modo binario).
+* \param path char* es la ruta del archivo.
+* \param pArrayListEmployee LinkedList* es el puntero al array de empleados.
+* \return (-1) Error (0) todo OK
+*/
 int controller_loadFromBinary(char* path , LinkedList* pArrayListEmployee)
 {
 	int retorno = -1;
@@ -59,13 +56,12 @@ int controller_loadFromBinary(char* path , LinkedList* pArrayListEmployee)
     return retorno;
 }
 
-/** \brief Guarda los datos de los empleados en el archivo data.csv (modo texto).
- *
- * \param path char*
- * \param pArrayListEmployee LinkedList*
- * \return int
- *
- */
+/*
+* \brief Función que guarda los datos de los empleados en el archivo data.csv (modo texto).
+* \param path char* es la ruta del archivo.
+* \param pArrayListEmployee LinkedList* es el puntero al array de empleados.
+* \return (-1) Error (0) todo OK
+*/
 int controller_saveAsText(char* path, LinkedList* pArrayListEmployee)
 {
 	int retorno = -1;
@@ -104,18 +100,17 @@ int controller_saveAsText(char* path, LinkedList* pArrayListEmployee)
     return retorno;
 }
 
-/** \brief Guarda los datos de los empleados en el archivo data.csv (modo binario).
- *
- * \param path char*
- * \param pArrayListEmployee LinkedList*
- * \return int
- *
- */
+/*
+* \brief Función que guarda los datos de los empleados en el archivo data.bin (modo binario).
+* \param path char* es la ruta del archivo
+* \param pArrayListEmployee LinkedList* es el puntero al array de empleados.
+* \return (-1) Error (0) todo OK
+*/
 int controller_saveAsBinary(char* path, LinkedList* pArrayListEmployee)
 {
 	int retorno = -1;
 
-	FILE* pArchivo; // Puntero al archivo
+	FILE* pArchivo;
 	Employee* pEmployee;
 
 	if(path != NULL && pArrayListEmployee != NULL)
@@ -138,14 +133,12 @@ int controller_saveAsBinary(char* path, LinkedList* pArrayListEmployee)
     return retorno;
 }
 
-
-/** \brief Alta de empleados
- *
- * \param path char*
- * \param pArrayListEmployee LinkedList*
- * \return int
- *
- */
+/*
+* \brief Función que se encarga de dar de alta un empleado
+* \param pArrayListEmployee LinkedList* es el puntero al array de empleados.
+* \param int* es el puntero al ID.
+* \return (-1) Error (0) todo OK
+*/
 int controller_addEmployee(LinkedList* pArrayListEmployee, int* id)
 {
 	int retorno = -1;
@@ -180,13 +173,11 @@ int controller_addEmployee(LinkedList* pArrayListEmployee, int* id)
     return retorno;
 }
 
-/** \brief Modificar datos de empleado
- *
- * \param path char*
- * \param pArrayListEmployee LinkedList*
- * \return int
- *
- */
+/*
+* \brief Función que modifica datos del empleado
+* \param pArrayListEmployee LinkedList* es el puntero al array de empleados.
+* \return (-1) Error (0) todo OK
+*/
 int controller_editEmployee(LinkedList* pArrayListEmployee)
 {
 	int retorno = -1;
@@ -227,14 +218,11 @@ int controller_editEmployee(LinkedList* pArrayListEmployee)
 	return retorno;
 }
 
-/** \brief Baja de empleado
- *
- * \param path char*
- * \param pArrayListEmployee LinkedList*
- * \return int
- *
- */
-
+/*
+* \brief Función que da de baja al empleado
+* \param pArrayListEmployee LinkedList* es el puntero al array de empleados.
+* \return (-1) Error (0) todo OK
+*/
 int controller_removeEmployee(LinkedList* pArrayListEmployee)
 {
 	int retorno = -1;
@@ -265,13 +253,11 @@ int controller_removeEmployee(LinkedList* pArrayListEmployee)
 }
 
 
-/** \brief Listar empleados
- *
- * \param path char*
- * \param pArrayListEmployee LinkedList*
- * \return int
- *
- */
+/*
+* \brief Función que imprime los empleados
+* \param pArrayListEmployee LinkedList* es el puntero al array de empleados.
+* \return (-1) Error (0) todo OK
+*/
 int controller_ListEmployee(LinkedList* pArrayListEmployee)
 {
 	int retorno = -1;
@@ -301,13 +287,11 @@ int controller_ListEmployee(LinkedList* pArrayListEmployee)
     return retorno;
 }
 
-/** \brief Ordenar empleados
-
- * \param path char*
- * \param pArrayListEmployee LinkedList*
- * \return int
- *
- */
+/*
+* \brief Función que ordena los empleados
+* \param pArrayListEmployee LinkedList* es el puntero al array de empleados.
+* \return (-1) Error (0) todo OK
+*/
 int controller_sortEmployee(LinkedList* pArrayListEmployee)
 {
 	int retorno = -1;

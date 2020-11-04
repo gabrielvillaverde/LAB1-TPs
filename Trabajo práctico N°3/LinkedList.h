@@ -15,6 +15,7 @@
 
 #ifndef __LINKEDLIST
 #define __LINKEDLIST
+
 struct Node
 {
     void* pElement; // Puntero al elemento (persona, empleado, etc.)

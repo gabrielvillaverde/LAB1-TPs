@@ -112,7 +112,7 @@ int employee_setId(Employee* this, int id)
 /*
 * \brief Función que obtiene el ID como int.
 * \param Employee* puntero a empleado.
-* \param
+* \param int* puntero al espacio donde guardará el ID.
 * \return (-1) Error (0) todo OK
 */
 int employee_getId(Employee* this, int* id)
@@ -127,9 +127,9 @@ int employee_getId(Employee* this, int* id)
 }
 
 /*
-* \brief Función que setea el ID como texto.
+* \brief Función que setea el nombre.
 * \param Employee* puntero a empleado.
-* \param char* ID a cargar.
+* \param char* nombre a cargar.
 * \return (-1) Error (0) todo OK
 */
 int employee_setNombre(Employee* this, char* nombre)
@@ -147,9 +147,9 @@ int employee_setNombre(Employee* this, char* nombre)
 }
 
 /*
-* \brief Función que obtiene el ID como int.
+* \brief Función que obtiene el nombre como texto.
 * \param Employee* puntero a empleado.
-* \param
+* \param char* puntero al espacio donde guardará el nombre.
 * \return (-1) Error (0) todo OK
 */
 int employee_getNombre(Employee* this, char* nombre)
@@ -164,9 +164,9 @@ int employee_getNombre(Employee* this, char* nombre)
 }
 
 /*
-* \brief Función que setea el ID como texto.
+* \brief Función que setea las horas trabajadas como int.
 * \param Employee* puntero a empleado.
-* \param char* ID a cargar.
+* \param int horas trabajadas a cargar.
 * \return (-1) Error (0) todo OK
 */
 int employee_setHorasTrabajadas(Employee* this, int horasTrabajadas)
@@ -182,9 +182,9 @@ int employee_setHorasTrabajadas(Employee* this, int horasTrabajadas)
 }
 
 /*
-* \brief Función que obtiene el ID como int.
+* \brief Función que obtiene las horas trabajadas como int.
 * \param Employee* puntero a empleado.
-* \param
+* \param int* puntero al espacio donde guardará el nombre.
 * \return (-1) Error (0) todo OK
 */
 int employee_getHorasTrabajadas(Employee* this, int* horasTrabajadas)
@@ -200,9 +200,9 @@ int employee_getHorasTrabajadas(Employee* this, int* horasTrabajadas)
 }
 
 /*
-* \brief Función que setea el ID como texto.
+* \brief Función que setea las horas trabajadas como texto.
 * \param Employee* puntero a empleado.
-* \param char* ID a cargar.
+* \param char* horas trabajadas a cargar.
 * \return (-1) Error (0) todo OK
 */
 int employee_setHorasTrabajadasTxt(Employee* this, char* horasTrabajadas)
@@ -220,9 +220,9 @@ int employee_setHorasTrabajadasTxt(Employee* this, char* horasTrabajadas)
 }
 
 /*
-* \brief Función que obtiene el ID como int.
+* \brief Función que obtiene las horas trabajadas como texto.
 * \param Employee* puntero a empleado.
-* \param
+* \param char* puntero al espacio donde guardará las horas trabajadas.
 * \return (-1) Error (0) todo OK
 */
 int employee_getHorasTrabajadasTxt(Employee* this, char* horasTrabajadas)
@@ -237,9 +237,9 @@ int employee_getHorasTrabajadasTxt(Employee* this, char* horasTrabajadas)
 }
 
 /*
-* \brief Función que setea el ID como texto.
+* \brief Función que setea el sueldo como int.
 * \param Employee* puntero a empleado.
-* \param char* ID a cargar.
+* \param int* sueldo a cargar.
 * \return (-1) Error (0) todo OK
 */
 int employee_setSueldo(Employee* this, int sueldo)
@@ -254,9 +254,9 @@ int employee_setSueldo(Employee* this, int sueldo)
 }
 
 /*
-* \brief Función que obtiene el ID como int.
+* \brief Función que obtiene el sueldo como int
 * \param Employee* puntero a empleado.
-* \param
+* \param int* puntero al espacio donde guardará el sueldo.
 * \return (-1) Error (0) todo OK
 */
 int employee_getSueldo(Employee* this, int* sueldo)
@@ -271,9 +271,9 @@ int employee_getSueldo(Employee* this, int* sueldo)
 }
 
 /*
-* \brief Función que setea el ID como texto.
+* \brief Función que setea el sueldo como texto.
 * \param Employee* puntero a empleado.
-* \param char* ID a cargar.
+* \param char* sueldo a cargar.
 * \return (-1) Error (0) todo OK
 */
 int employee_setSueldoTxt(Employee* this, char* sueldo)
@@ -291,9 +291,9 @@ int employee_setSueldoTxt(Employee* this, char* sueldo)
 }
 
 /*
-* \brief Función que obtiene el ID como int.
+* \brief Función que obtiene el sueldo como texto
 * \param Employee* puntero a empleado.
-* \param
+* \param char* puntero al espacio donde guardará el sueldo.
 * \return (-1) Error (0) todo OK
 */
 int employee_getSueldoTxt(Employee* this, char* sueldo)

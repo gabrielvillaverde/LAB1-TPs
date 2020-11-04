@@ -1,5 +1,6 @@
 #ifndef employee_H_INCLUDED
 #define employee_H_INCLUDED
+
 typedef struct
 {
     int id;
@@ -14,6 +15,7 @@ void employee_delete();
 
 int employee_setId(Employee* this, int id);
 int employee_getId(Employee* this, int* id);
+
 int employee_setIdTxt(Employee* this, char* id);
 int employee_getIdTxt(Employee* this, char* id);
 
