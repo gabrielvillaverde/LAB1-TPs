@@ -15,6 +15,7 @@ int utn_getIntConMinMax(char*, char*, int*, int, int, int);
 int utn_isIntNumber(char*);
 int utn_isFloatNumber(char *);
 int utn_isAlphabetic(char*);
+int utn_isAlphabeticWithHyphen(char *pCadena);
 int utn_isNumeric(char*);
 int utn_isAlphanumeric(char*);
 int utn_getString(char*, char*, char*, int, int);

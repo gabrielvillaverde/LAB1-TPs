@@ -53,6 +53,27 @@ int utn_isAlphabetic(char *pCadena)
     if(pCadena != NULL){
         for(int i = 0 ; pCadena[i] != '\0' ; i++)
         {
+            if((pCadena[i] < 'A' || pCadena[i] > 'z') && (pCadena[i] > 'Z' || pCadena[i] < 'a') && pCadena[i] != ' ')
+            {
+            	retorno = 0;
+                break;
+            }
+        }
+    }
+    return retorno;
+}
+
+/**
+ * \brief Función que chequea si una cadena es alfabética y acepta guiones
+ * \param pCadena: El puntero a char que se recorre para corroborar si es alfabético y si hay guiones
+ * \return (-1) Error (0) todo OK
+ */
+int utn_isAlphabeticWithHyphen(char *pCadena)
+{
+    int retorno = 1;
+    if(pCadena != NULL){
+        for(int i = 0 ; pCadena[i] != '\0' ; i++)
+        {
             if((pCadena[i] < 'A' || pCadena[i] > 'z') && (pCadena[i] > 'Z' || pCadena[i] < 'a') && pCadena[i] != ' ' && pCadena[i] != '-')
             {
             	retorno = 0;

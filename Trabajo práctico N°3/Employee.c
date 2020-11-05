@@ -137,7 +137,7 @@ int employee_setNombre(Employee* this, char* nombre)
 	int retorno = -1;
 	if(this != NULL && nombre != NULL)
 	{
-		if(utn_isAlphabetic(nombre))
+		if(utn_isAlphabeticWithHyphen(nombre))
 		{
 			retorno = 0;
 			strncpy(this->nombre, nombre, 50);
