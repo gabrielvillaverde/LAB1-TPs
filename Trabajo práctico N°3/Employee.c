@@ -23,7 +23,7 @@ Employee* employee_new()
 * \param char* nombre a setear.
 * \param char* horas trabajadas a setear.
 * \param char* sueldo a setear.
-* \return (-1) Error (0) todo OK
+* \return puntero del tipo Employee*
 */
 Employee* employee_newParametros(char* idStr, char* nombreStr, char* horasTrabajadasStr, char* sueldoStr)
 {
@@ -314,7 +314,8 @@ int employee_getSueldoTxt(Employee* this, char* sueldo)
 int employee_sortEmployees(LinkedList* pArrayListEmployee)
 {
 	int retorno = -1;
-	int option;
+	int opcion;
+	int orden;
 
 	if(pArrayListEmployee != NULL)
 	{
@@ -323,26 +324,33 @@ int employee_sortEmployees(LinkedList* pArrayListEmployee)
 		if(utn_getIntConMinMax("\n1 - Ordenar la lista por nombre."
 							   "\n2 - Ordenar la lista por cantidad de horas trabajadas."
 							   "\n3 - Ordenar la lista por salario."
-							   "\n4 - Salir.\n",
-							   "\nError, por favor elija una opción entre 1 y 4.\n", &option, 1, 4, 3) == 0)
+							   "\n4 - Volver al menú anterior.\n",
+							   "\nError, por favor elija una opción entre 1 y 4.\n", &opcion, 1, 4, 3) == 0)
+		{
+			if(opcion != 4)
+			{
+				if(utn_getIntConMinMax("\n¿Cómo quiere ordenar la lista? [1 - Ascendente] - [0 - Descendente]\n",
+						      "\nError, escoja una opción entre 1 y 2.\n", &orden, 0, 1, 3) == 0)
 				{
-					switch(option)
+					switch(opcion)
 					{
 						case 1:
-							printf("\nUsted ordenó la lista por nombre de manera ascendente, ahora puede volver al menú anterior (opción 4, y espere...)\n");
-							ll_sort(pArrayListEmployee, employee_compareByName, 1);
+							printf("\nUsted ordenó la lista por nombre, ahora puede volver al menú anterior (esto puede tardar...)\n");
+							ll_sort(pArrayListEmployee, employee_compareByName, orden);
 							break;
 						case 2:
-							printf("\nUsted ordenó la lista por horas trabajadas de manera ascendente, ahora puede volver al menú anterior (opción 4, y espere...)\n");
-							ll_sort(pArrayListEmployee, employee_compareByHours, 1);
+							printf("\nUsted ordenó la lista por horas trabajadas, ahora puede volver al menú anterior (esto puede tardar...)\n");
+							ll_sort(pArrayListEmployee, employee_compareByHours, orden);
 							break;
 						case 3:
-							printf("\nUsted ordenó la lista por salario de manera ascendente, ahora puede volver al menú anterior (opción 4, y espere...)\n");
-							ll_sort(pArrayListEmployee, employee_compareBySalary, 1);
+							printf("\nUsted ordenó la lista por salario, ahora puede volver al menú anterior (esto puede tardar...)\n");
+							ll_sort(pArrayListEmployee, employee_compareBySalary, orden);
 							break;
 					}
 				}
-		}while(option != 4);
+			}
+		}
+		}while(opcion != 4);
 	}
 	return retorno;
 }
@@ -351,7 +359,7 @@ int employee_sortEmployees(LinkedList* pArrayListEmployee)
 * \brief Función que compara los nombres
 * \param puntero al primer elemento.
 * \param puntero al segundo elemento.
-*
+* \return (0) si son iguales, (-1) si el primero es menor al segundo, (1) si el primero es mayor al segundo
 */
 int employee_compareByName(void* pFirstElem, void* pSecondElem)
 {
@@ -379,7 +387,7 @@ int employee_compareByName(void* pFirstElem, void* pSecondElem)
 * \brief Función que compara las horas trabajadas
 * \param puntero al primer elemento.
 * \param puntero al segundo elemento.
-*
+* \return (0) si son iguales, (-1) si el primero es menor al segundo, (1) si el primero es mayor al segundo
 */
 int employee_compareByHours(void* pFirstElem, void* pSecondElem)
 {
@@ -406,7 +414,7 @@ int employee_compareByHours(void* pFirstElem, void* pSecondElem)
 * \brief Función que compara los salarios.
 * \param puntero al primer elemento.
 * \param puntero al segundo elemento.
-* \return
+* \return (0) si son iguales, (-1) si el primero es menor al segundo, (1) si el primero es mayor al segundo
 */
 int employee_compareBySalary(void* pFirstElem, void* pSecondElem)
 {

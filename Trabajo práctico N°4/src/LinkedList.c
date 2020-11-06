@@ -5,7 +5,7 @@
 
 
 static Node* getNode(LinkedList* this, int nodeIndex);
-static int addNode(LinkedList* this, int nodeIndex,void* pElement);
+static int addNode(LinkedList* this, int nodeIndex, void* pElement);
 
 /** \brief Crea un nuevo LinkedList en memoria de manera dinámica
  *
@@ -47,7 +47,8 @@ int ll_len(LinkedList* this)
  *
  * \param this LinkedList* Puntero a la lista
  * \param index int Indice del nodo a obtener
- * \return Node* Retorna  (NULL) Error: si el puntero a la lista es NULL o (si el indice es menor a 0 o mayor al len de la lista) (pNode) Si funciono correctamente
+ * \return Node* Retorna  (NULL) Error: si el puntero a la lista es NULL o (si el indice es menor a 0 o mayor al len de la lista)
+ *                        (pNode) Si funciono correctamente
  *
  */
 // Explicación: 8:44 hs (clase 21)
@@ -72,7 +73,8 @@ static Node* getNode(LinkedList* this, int nodeIndex)
  *
  * \param this LinkedList* Puntero a la lista
  * \param index int Indice del nodo a obtener
- * \return Node* Retorna  (NULL) Error: si el puntero a la lista es NULL o (si el indice es menor a 0 o mayor al len de la lista) (pElement) Si funciono correctamente
+ * \return Node* Retorna  (NULL) Error: si el puntero a la lista es NULL o (si el indice es menor a 0 o mayor al len de la lista)
+ *                        (pElement) Si funciono correctamente
  *
  */
 Node* test_getNode(LinkedList* this, int nodeIndex)
@@ -90,10 +92,38 @@ Node* test_getNode(LinkedList* this, int nodeIndex)
                         ( 0) Si funciono correctamente
  *
  */
-static int addNode(LinkedList* this, int nodeIndex,void* pElement)
+static int addNode(LinkedList* this, int nodeIndex, void* pElement)
 {
-    int returnAux = -1;
-    return returnAux;
+	int retorno = -1;
+
+	Node *pNewNode;
+	Node *pActualNode;
+
+	if(this != NULL)
+	{
+		if(nodeIndex >= 0 && nodeIndex <= ll_len(this))
+		{
+			pNewNode = (Node*) malloc(sizeof(Node)); // Creo el nuevo nodo
+			pNewNode->pElement = pElement; // Escribo el elemento en el campo elemento del nodo.
+			pNewNode->pNextNode = NULL;
+
+			if(nodeIndex == 0) // Si estoy en la primera posición de la Linked List
+			{
+				// Explicación: HORA 10:00
+				pNewNode->pNextNode = this->pFirstNode;
+				this->pFirstNode = pNewNode;
+			}
+			else
+			{	// Explicación: 10:30 HS. Recomendación: dibujarlo en una hoja.
+				pActualNode = getNode(this, nodeIndex - 1); // A getNode le paso la lista (this) y nodeIndex -1.
+				pNewNode->pNextNode = pActualNode->pNextNode;
+				pActualNode->pNextNode = pNewNode;
+			}
+			retorno = 0;
+			this->size++;
+		}
+	}
+	return retorno;
 }
 
 /** \brief Permite realizar el test de la funcion addNode la cual es privada
@@ -102,12 +132,12 @@ static int addNode(LinkedList* this, int nodeIndex,void* pElement)
  * \param nodeIndex int Ubicacion donde se agregara el nuevo nodo
  * \param pElement void* Puntero al elemento a ser contenido por el nuevo nodo
   * \return int Retorna  (-1) Error: si el puntero a la lista es NULL o (si el indice es menor a 0 o mayor al len de la lista)
-                        ( 0) Si funciono correctamente
+                         ( 0) Si funciono correctamente
  *
  */
 int test_addNode(LinkedList* this, int nodeIndex,void* pElement)
 {
-    return addNode(this,nodeIndex,pElement);
+	return addNode(this, nodeIndex, pElement);
 }
 
 
