@@ -19,15 +19,15 @@
 #ifndef __LINKEDLIST
 #define __LINKEDLIST
 struct Node
-{     // ACCESO SECUENCIAL https://vvcap.com/tqzmoUYeu
-    void* pElement;                 //puntero al elemento (persona, empleado, etc.)
-    struct Node* pNextNode;         //puntero al prox nodo
+{                            // ACCESO SECUENCIAL: https://vvcap.com/tqzmoUYeu
+    void* pElement;          // Puntero al elemento, es void* así es genérico (persona, empleado, etcétera)
+    struct Node* pNextNode;  // Puntero al próximo nodo
 }typedef Node;
 
 struct LinkedList
 {
-    Node* pFirstNode;
-    int size;                       //cada vez que agrego o elimino un elemento size++/--
+    Node* pFirstNode;        // Puntero al primer nodo
+    int size;                // Cada vez que agrego o elimino un elemento: size++/--
 }typedef LinkedList;
 #endif
 

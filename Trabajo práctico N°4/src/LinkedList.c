@@ -7,15 +7,21 @@
 static Node* getNode(LinkedList* this, int nodeIndex);
 static int addNode(LinkedList* this, int nodeIndex,void* pElement);
 
-/** \brief Crea un nuevo LinkedList en memoria de manera dinamica
+/** \brief Crea un nuevo LinkedList en memoria de manera dinámica
  *
  *  \param void
- *  \return LinkedList* Retorna (NULL) en el caso de no conseguir espacio en memoria
- *                      o el puntero al espacio reservado
+ *  \return LinkedList* Retorna (NULL) en el caso de no conseguir espacio en memoria o el puntero al espacio reservado
  */
 LinkedList* ll_newLinkedList(void)
 {
-    LinkedList* this= NULL;
+    LinkedList* this = NULL;
+    this = (LinkedList*) malloc (sizeof(LinkedList));
+
+    if(this != NULL)
+    {
+    	this->size = 0;
+    	this->pFirstNode = NULL;
+    }
     return this;
 }
 
@@ -27,8 +33,13 @@ LinkedList* ll_newLinkedList(void)
  */
 int ll_len(LinkedList* this)
 {
-    int returnAux = -1;
-    return returnAux;
+    int retorno = -1;
+
+    if(this != NULL)
+    {
+    	retorno = this->size;
+    }
+    return retorno;
 }
 
 
@@ -36,21 +47,32 @@ int ll_len(LinkedList* this)
  *
  * \param this LinkedList* Puntero a la lista
  * \param index int Indice del nodo a obtener
- * \return Node* Retorna  (NULL) Error: si el puntero a la lista es NULL o (si el indice es menor a 0 o mayor al len de la lista)
-                        (pNode) Si funciono correctamente
+ * \return Node* Retorna  (NULL) Error: si el puntero a la lista es NULL o (si el indice es menor a 0 o mayor al len de la lista) (pNode) Si funciono correctamente
  *
  */
+// Explicación: 8:44 hs (clase 21)
 static Node* getNode(LinkedList* this, int nodeIndex)
 {
-    return NULL;
+
+	Node* pNode = NULL; // Creamos un nodo para devolver.
+
+	if(this != NULL && nodeIndex >= 0 && nodeIndex < ll_len(this))
+	{
+		pNode = this->pFirstNode; // Le cargamos al nodo para devolver el valor del primer nodo.
+		// La cantidad de veces que tenemos que iterar depende del índice que quiero devolver. Si el nodeIndex vale 2, tengo que iterar 2 veces.
+		for(int i = 0 ; i < nodeIndex ; i++) // Si nodeIndex vale 0, NO VA A ENTRAR AL FOR. A medida que voy recorriendo la lista...
+		{
+			pNode = pNode->pNextNode; // Me guardo en la variable pNode el valor del campo del próximo nodo.
+		}
+	}
+    return pNode;
 }
 
 /** \brief  Permite realizar el test de la funcion getNode la cual es privada
  *
  * \param this LinkedList* Puntero a la lista
  * \param index int Indice del nodo a obtener
- * \return Node* Retorna  (NULL) Error: si el puntero a la lista es NULL o (si el indice es menor a 0 o mayor al len de la lista)
-                        (pElement) Si funciono correctamente
+ * \return Node* Retorna  (NULL) Error: si el puntero a la lista es NULL o (si el indice es menor a 0 o mayor al len de la lista) (pElement) Si funciono correctamente
  *
  */
 Node* test_getNode(LinkedList* this, int nodeIndex)

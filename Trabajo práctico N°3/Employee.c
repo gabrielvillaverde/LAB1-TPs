@@ -351,7 +351,7 @@ int employee_sortEmployees(LinkedList* pArrayListEmployee)
 * \brief Función que compara los nombres
 * \param puntero al primer elemento.
 * \param puntero al segundo elemento.
-* \return (-1) Error (0) todo OK
+*
 */
 int employee_compareByName(void* pFirstElem, void* pSecondElem)
 {
@@ -379,7 +379,7 @@ int employee_compareByName(void* pFirstElem, void* pSecondElem)
 * \brief Función que compara las horas trabajadas
 * \param puntero al primer elemento.
 * \param puntero al segundo elemento.
-* \return (-1) Error (0) todo OK
+*
 */
 int employee_compareByHours(void* pFirstElem, void* pSecondElem)
 {
@@ -406,7 +406,7 @@ int employee_compareByHours(void* pFirstElem, void* pSecondElem)
 * \brief Función que compara los salarios.
 * \param puntero al primer elemento.
 * \param puntero al segundo elemento.
-* \return (-1) Error (0) todo OK
+* \return
 */
 int employee_compareBySalary(void* pFirstElem, void* pSecondElem)
 {
