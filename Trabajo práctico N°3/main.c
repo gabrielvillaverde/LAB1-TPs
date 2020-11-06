@@ -5,12 +5,16 @@
 #include "Employee.h"
 #include "utn.h"
 
+#define FALSE 0
+#define TRUE 1
+
 int main()
 {
 	setbuf(stdout, NULL);
 
     int opcion;
     int id = 1001;
+    int archivoGuardado = FALSE;
 
     LinkedList* listaEmpleados = ll_newLinkedList();
     do
@@ -126,6 +130,7 @@ int main()
 						if(controller_saveAsText("data.csv", listaEmpleados) == 0)
 						{
 							printf("\nArchivo guardado como texto correctamente.\n");
+							archivoGuardado = TRUE;
 						}
 						else
 						{
@@ -144,6 +149,7 @@ int main()
 						if(controller_saveAsBinary("data.bin", listaEmpleados) == 0)
 						{
 							printf("\nArchivo guardado como binario correctamente.\n");
+							archivoGuardado = TRUE;
 						}
 						else
 						{
@@ -155,6 +161,12 @@ int main()
 						printf("\nPrimero cargue el archivo.\n");
 					}
 					break;
+				case 10:
+					if(archivoGuardado == TRUE)
+					{
+						ll_clear(listaEmpleados);
+						ll_deleteLinkedList(listaEmpleados);
+					}
 			}
     	}
     }while(opcion != 10);
