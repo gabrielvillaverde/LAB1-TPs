@@ -200,7 +200,7 @@ int controller_editEmployee(LinkedList* pArrayListEmployee)
 
 			if(pEmployee != NULL)
 			{
-				printf("The employee to modify is: %s, with the following ID: %d\n", pEmployee->nombre, pEmployee->id);
+				printf("El empleado a modificar es: %s, con el siguiente ID: %d\n", pEmployee->nombre, pEmployee->id);
 				if( utn_getString("\nIngrese el nuevo nombre:\n", "\nError, ingrese un nombre correcto.\n", nombre, 1000, 3) == 0
 						&&
 					utn_getStringWithOnlyNumbers("\nIngrese las nuevas horas trabajadas.\n", "\nError, ingrese las horas trabajadas.\n", horasTrabajadas, 1000, 3) == 0
@@ -241,7 +241,7 @@ int controller_removeEmployee(LinkedList* pArrayListEmployee)
 
 			if(pEmployee != NULL)
 			{
-				printf("You deleted: %s, with the following ID: %d\n", pEmployee->nombre, pEmployee->id);
+				printf("Usted borró el siguiente empleado: %s, con el ID: %d\n", pEmployee->nombre, pEmployee->id);
 				pEmployee = ll_get(pArrayListEmployee, indiceEliminar);
 				employee_delete(pEmployee);
 				ll_remove(pArrayListEmployee, indiceEliminar);
@@ -272,7 +272,7 @@ int controller_ListEmployee(LinkedList* pArrayListEmployee)
 	if(pArrayListEmployee != NULL)
 	{
 		retorno = 0;
-		printf("\n| LIST OF EMPLOYEES |\n");
+		printf("\n| LISTA DE EMPLEADOS |\n");
 
 		for(int i ; i < ll_len(pArrayListEmployee) ; i++)
 		{
