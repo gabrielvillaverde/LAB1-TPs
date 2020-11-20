@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "LinkedList.h" // Tuve que correr la carpeta desde "inc" a "src" para que la reconozca.
+#include "../inc/LinkedList.h"
 
 
 static Node* getNode(LinkedList* this, int nodeIndex);
@@ -51,19 +51,18 @@ int ll_len(LinkedList* this)
  *                        (pNode) Si funciono correctamente
  *
  */
-// Explicación: 8:44 hs (clase 21)
+
 static Node* getNode(LinkedList* this, int nodeIndex)
 {
 
-	Node* pNode = NULL; // Creamos un nodo para devolver.
+	Node* pNode = NULL;
 
 	if(this != NULL && nodeIndex >= 0 && nodeIndex < ll_len(this))
 	{
-		pNode = this->pFirstNode; // Le cargamos al nodo para devolver el valor del primer nodo.
-		// La cantidad de veces que tenemos que iterar depende del índice que quiero devolver. Si el nodeIndex vale 2, tengo que iterar 2 veces.
-		for(int i = 0 ; i < nodeIndex ; i++) // Si nodeIndex vale 0, NO VA A ENTRAR AL FOR. A medida que voy recorriendo la lista...
+		pNode = this->pFirstNode;
+		for(int i = 0 ; i < nodeIndex ; i++)
 		{
-			pNode = pNode->pNextNode; // Me guardo en la variable pNode el valor del campo del próximo nodo.
+			pNode = pNode->pNextNode;
 		}
 	}
     return pNode;
@@ -101,25 +100,24 @@ static int addNode(LinkedList* this, int nodeIndex, void* pElement)
 
 	if(this != NULL)
 	{
-		if(nodeIndex >= 0 && nodeIndex <= ll_len(this)) // NodeIndex representa la posición del nodo que estoy agregando, si es igual al ll_len lo dejo pasar, ya que puede ser que esté ingresando uno nuevo al final.
+		if(nodeIndex >= 0 && nodeIndex <= ll_len(this))
 		{
-			pNewNode = (Node*) malloc(sizeof(Node)); // Le pido al sistema que reserve memoria para un nuevo nodo
-			pNewNode->pElement = pElement; // Escribo el elemento en el campo elemento del nodo.
+			pNewNode = (Node*) malloc(sizeof(Node));
+			pNewNode->pElement = pElement;
 			pNewNode->pNextNode = NULL;
 
-			if(nodeIndex == 0) // Si estoy en la primera posición de la Linked List
+			if(nodeIndex == 0)
 			{
-				// Explicación: HORA 10:00
 				pNewNode->pNextNode = this->pFirstNode;
 				this->pFirstNode = pNewNode;
 			}
 			else
-			{	// Explicación: 10:30 HS. Recomendación: dibujarlo en una hoja.
-				pActualNode = getNode(this, nodeIndex - 1); // A getNode le paso la lista (this) y nodeIndex -1.
-				pNewNode->pNextNode = pActualNode->pNextNode; // Indico que el nodo nuevo tiene que apuntar al próximo nodo. // Hora 7:52 (clase 23)
+			{
+				pActualNode = getNode(this, nodeIndex - 1);
+				pNewNode->pNextNode = pActualNode->pNextNode;
 				pActualNode->pNextNode = pNewNode;
 			}
-			this->size++; // En size se guarda la cantidad de nodos que existen.
+			this->size++;
 			retorno = 0;
 		}
 	}
@@ -528,7 +526,6 @@ LinkedList* ll_clone(LinkedList* this)
     return cloneArray;
 }
 
-
 /** \brief Ordena los elementos de la lista utilizando la funcion criterio recibida como parametro
  * \param pList LinkedList* Puntero a la lista
  * \param pFunc (*pFunc) Puntero a la funcion criterio
@@ -537,7 +534,6 @@ LinkedList* ll_clone(LinkedList* this)
                                 ( 0) Si ok
  */
 int ll_sort(LinkedList* this, int (*pFunc)(void*, void*), int order)
-	// * Hay que preguntar si this != NULL y pFunc != NULL
 {
 	int retorno = -1;
 
@@ -563,17 +559,6 @@ int ll_sort(LinkedList* this, int (*pFunc)(void*, void*), int order)
 	}
 	return retorno;
 }
-
-// Explicación, hora 20:00 de la clase (no grabaron)
-// https://vvcap.com/7rPTsukGs
-
-/* toma cada uno de los elementos q estan en la lista y se los pasa 1 por 1 a una
-funcion, a la funcion que le esty pasand como argumento a la propia funcion map
-*/
-/* Acá cada llamada a función se ejecuta de forma independiente,
- * entra y sale y no deja ningún valor que persista en ningún lado, a diferencia
- * de reduce.
- */
 
 /**
  * \brief Recorre la lista, analizando cada elemento para que se realice una tarea.
@@ -605,16 +590,8 @@ int ll_map(LinkedList* this, int (*pFunc)(void*))
 	return retorno;
 }
 
-// Hora: 9:39
-/* Recorre el arrayList y debe llamar a una función criterio que le va a decir
- * si a ese elemento hay o no que quitarlo del arrayList.
- * La función criterio devolverá verdadero o falso.
- * Recibe una función y me devuelve una lista nueva por valor de retorno.
- * Se puede reducir la original o agregar una nueva. */
-
 LinkedList* ll_filter(LinkedList* this, int (*pFunc)(void*))
-{	// Explicación: Hora 8:58 (clase 23), pero lo hace con el remove
-	// Hacer un ll_remove no significa borrar el elemento, significa borrar el nodo que contiene la dirección de memoria que apunta a ese elemento.
+{
 	LinkedList* pFilteredList = NULL;
 	void* pElement;
     int len = ll_len(this);
@@ -627,7 +604,7 @@ LinkedList* ll_filter(LinkedList* this, int (*pFunc)(void*))
 			for(int i = 0 ; i < len ; i++)
 			{
 				pElement = ll_get(this, i); // Realizo un recorrido de la lista original.
-				if(pFunc(pElement)) // Si la función devuelve TRUE...
+				if(pFunc(pElement)) // Si la función genérica devuelve TRUE...
 				{
 					ll_add(pFilteredList, pElement); // Cargo en la lista filtrada el elemento.
 				}
@@ -637,25 +614,6 @@ LinkedList* ll_filter(LinkedList* this, int (*pFunc)(void*))
     return pFilteredList;
 }
 
-// Hora: 10:23
-/* Reduce una lista a un número. */
-/* Sirven para obtener promedio de edades de la lista de empleados,
- * suma de todos los salarios de la lista de empleados, etcétera.
- * Llaman a una función, la función devuelve un valor, y estas funciones
- * acumulan ese valor. Por ejemplo, de mis empleados, cuántos son
- * mayores de 18 años, la función criterio que yo paso se fija si es
- * mayor de 18 años, si es mayor de 18 devuelve un 1.
- * Como se que reduceFloat acumula esos 1, la respuesta es cuántos
- * son mayores de 18 años.
- * Después cuántos trabajan en determinado sector. Entonces
- * la función criterio devuelve un 1 cuando trabaja en sistemas, y
- * la función reduce me acumula cuántos empleados trabajan en sistemas.
- */
-//float ll_reduceFloat(LinkedList* this, float (*pFunc)(void*))
-//int ll_reduceInt(LinkedList* this, int (*pFunc)(void*))
-
-// Pregunta examen prog: 9:10 (clase 23)
-//int ll_reduce(LinkedList* this, int(*pFunc)(void*))
 int ll_reduce(LinkedList* this, int (*pFunc)(void*, int, int))
 {
 	void* pElement = NULL;
@@ -699,6 +657,3 @@ int ll_count(LinkedList* this, int(*pFunc)(void*))
 	}
 	return retorno;
 }
-
-/* Para después del jueves. */
-// int ll_findInt(LinkedList* this, int (*pFunc)(void*, int))
