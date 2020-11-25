@@ -240,7 +240,8 @@ int ll_remove(LinkedList* this, int index)
     	{
     		if(index == 0)
     		{
-    			this->pFirstNode = NULL;
+    			this->pFirstNode = pNodeToRemove->pNextNode;
+    			// this->pFirstNode = NULL; Esto provocaría que al borrar el primer nodo de la lista, se rompa la LinkedList.
     		}
     		else
     		{
