@@ -614,6 +614,54 @@ LinkedList* ll_filter(LinkedList* this, int (*pFunc)(void*))
     return pFilteredList;
 }
 
+LinkedList* ll_filter2(LinkedList* this, int (*pFunc)(void*,void*), void* argumento)
+{
+	LinkedList* pFilteredList = NULL;
+	void* pElement;
+    int len = ll_len(this);
+
+	if(this != NULL && pFunc != NULL)
+	{
+		pFilteredList = ll_newLinkedList(); // Devuelvo una lista nueva
+		if(pFilteredList != NULL)
+		{
+			for(int i = 0 ; i < len ; i++) // Realizo un recorrido de la lista original.
+			{
+				pElement = ll_get(this, i);
+				if(pFunc(pElement, argumento)) // Si la función genérica devuelve TRUE...
+				{
+					ll_add(pFilteredList, pElement); // Cargo en la lista filtrada el elemento.
+				}
+			}
+		}
+	}
+    return pFilteredList;
+}
+
+LinkedList* ll_filter3(LinkedList* this, int (*pFunc)(void*, void*, void*), void* argumentoUno, void* argumentoDos)
+{
+	LinkedList* pFilteredList = NULL;
+	void* pElement;
+    int len = ll_len(this);
+
+	if(this != NULL && pFunc != NULL)
+	{
+		pFilteredList = ll_newLinkedList(); // Devuelvo una lista nueva
+		if(pFilteredList != NULL)
+		{
+			for(int i = 0 ; i < len ; i++) // Realizo un recorrido de la lista original.
+			{
+				pElement = ll_get(this, i);
+				if(pFunc(pElement, argumentoUno, argumentoDos)) // Si la función genérica devuelve TRUE...
+				{
+					ll_add(pFilteredList, pElement); // Cargo en la lista filtrada el elemento.
+				}
+			}
+		}
+	}
+    return pFilteredList;
+}
+
 int ll_reduce(LinkedList* this, int (*pFunc)(void*, int, int))
 {
 	void* pElement = NULL;
@@ -628,6 +676,52 @@ int ll_reduce(LinkedList* this, int (*pFunc)(void*, int, int))
 		}
 	}
 	return valor;
+}
+
+/** \brief Recorre la lista y va acumulando valores del tipo int.
+ * \param this LinkedList* Puntero a la lista
+ * \param int (*pFunc) Puntero a la función criterio
+ * \return int Retorna  (-1) Error: si el puntero a la listas es NULL
+                        ( 0) Si ok
+ */
+int ll_reduceInt(LinkedList* this, int (*pFunc)(void*,void*), void* argumento)
+{
+	int retorno = 0;
+
+	void* pElement;
+
+	if(this != NULL && pFunc != NULL)
+	{
+		for (int i = 0 ; i < ll_len(this) ; i++)
+		{
+			pElement = ll_get(this, i);
+			retorno += pFunc(pElement, argumento);
+		}
+	}
+	return retorno;
+}
+
+/** \brief Recorre la lista y va acumulando valores del tipo float.
+ * \param this LinkedList* Puntero a la lista
+ * \param int (*pFunc) Puntero a la función criterio
+ * \return int Retorna  (-1) Error: si el puntero a la listas es NULL
+                        ( 0) Si ok
+ */
+float ll_reduceFloat(LinkedList* this, float (*pFunc)(void*))
+{
+	int retorno = -1;
+
+	void* pElement;
+
+	if(this != NULL && pFunc != NULL)
+	{
+		for (int i = 0 ; i < ll_len(this) ; i++)
+		{
+			pElement = ll_get(this, i);
+			retorno += pFunc(pElement);
+		}
+	}
+	return retorno;
 }
 
 /** \brief Cuenta los elementos de la lista de acuerdo a la función criterio recibida como parámetro.
