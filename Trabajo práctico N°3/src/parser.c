@@ -1,3 +1,10 @@
+/*
+ * parser.c
+ *
+ *  Created on: 20 nov. 2020
+ *      Author: Hzkr
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "LinkedList.h"
@@ -70,3 +77,4 @@ int parser_EmployeeFromBinary(FILE* pFile, LinkedList* pArrayListEmployee)
 	}
     return retorno;
 }
+
